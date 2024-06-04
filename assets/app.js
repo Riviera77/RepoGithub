@@ -9,7 +9,7 @@ console.log(octokit);
 octokit.rest.repos
 	.get({
 		owner: 'Riviera77',
-		repo: 'FrontZooArcadia',
+		repo: 'RepoGithub',
 	}) // On récupère un seul repo
 	.then(({ data }) => {
 		console.log('Repo récupéré', data);
