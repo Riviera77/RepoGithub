@@ -1,4 +1,4 @@
-import { Octokit, App } from 'https://esm.sh/octokit';
+import { Octokit } from 'https://esm.sh/octokit';
 
 class Home {
 	constructor() {
@@ -27,7 +27,7 @@ class Home {
 				this.updateHTMLUser(data);
 			})
 			.catch((error) => {
-				console.error('Erreur lors de la récupération des informations du profil', error);
+				console.error('ERREUR lors de lappel api getUserInformations', error);
 			});
 	}
 
@@ -35,9 +35,22 @@ class Home {
 		// API #2 : Récupérer les informations du profil depuis l'API avec Octokit JS + await/async
 		//URL de l'API classique : https://api.github.com/users/Riviera77/repos
 		const octokit = new Octokit();
-		const response = await octokit.request('GET /users/Riviera77/repos');
-		const data = response.data;
-		console.log(data);
+		const response = await octokit.request('GET /users/Riviera77/repos').catch((error) => {
+			console.log("ERREUR lors de l'appel api getReposInformations", error);
+		});
+		const recentsProjects = response.data.slice(-3);
+		// URL pour récupérer les langages d'un projet :
+		// https://api.github.com/repos/Riviera77/{nom-du-repo}/languages
+		for (let i = 0; i < recentsProjects.length; i++) {
+			const languages_url = recentsProjects[i].languages_url;
+			const cleanedUrl = languages_url.replace('{https://api.github.com}', '');
+			const responseLanguages = await octokit.request(`GET ${cleanedUrl}`).catch((error) => {
+				console.log("ERREUR lors de l'appel api getReposInformations - langages", error);
+			});
+			const projectLanguages = responseLanguages.data;
+			recentsProjects[i].languages = projectLanguages;
+		}
+		this.updateHTMLProjects(recentsProjects);
 	}
 
 	updateHTMLUser(APIdata) {
@@ -47,6 +60,30 @@ class Home {
 		this.profilHTML.setAttribute('href', APIdata.html_url);
 		// Afficher mon avatar Github
 		this.avatarHTML.setAttribute('src', APIdata.avatar_url);
+	}
+
+	updateHTMLProjects(projects) {
+		const maxIndex = projects.length - 1;
+		let htmlIndex = 0;
+		for (let i = maxIndex; i > maxIndex - 3; i--) {
+			const project = projects[i];
+			this.projectsTitle[htmlIndex].textContent = project.name;
+			this.projectsDescription[htmlIndex].textContent = project.description;
+			const languages = project.languages;
+			this.createHTMLLanguageTag(this.projectsTagsContainer[i], project.languages);
+			htmlIndex++;
+		}
+	}
+
+	createHTMLLanguageTag(div, languages) {
+		// OÙ je créer un élément HTML
+		// quels élements
+		const arrayLanguages = Object.keys(languages);
+		for (let i = 0; i < arrayLanguages.length; i++) {
+			const span = document.createElement('span');
+			span.textContent = arrayLanguages[i];
+			div.appendChild(span);
+		}
 	}
 }
 
