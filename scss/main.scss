@@ -1,0 +1,10 @@
+@use './base/reset-meyers';
+@use './base/reset-custom';
+
+@use './layout/header';
+
+@use './components/button';
+
+body {
+	background: pink;
+}

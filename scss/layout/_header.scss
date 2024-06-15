@@ -1,0 +1,26 @@
+// utilisation du BEM (block-Element-Modifier) pour la structure HTML
+
+@use '../abstracts/_variables' as var;
+
+.header {
+	border-radius: 0.5rem;
+	padding: 0.75rem;
+	background-color: var.$grey;
+	display: flex;
+	justify-content: space-between;
+
+	&__back-home {
+		color: var.$white;
+		width: 2.5rem;
+		height: 2.5rem;
+		border-radius: 100%;
+		background-color: var.$light-grey;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	&__icon {
+		width: 1.5rem;
+		height: 1.5rem;
+	}
+}

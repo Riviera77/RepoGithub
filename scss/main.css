@@ -1,0 +1,190 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-style: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  font-family: "Inter", sans-serif;
+}
+
+/* Colors */
+.header {
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  background-color: #212121;
+  display: flex;
+  justify-content: space-between;
+}
+.header__back-home {
+  color: #dadada;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 100%;
+  background-color: #373737;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header__icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.button, .button--secondary {
+  background-color: #373737;
+  border-radius: 0.5rem;
+  color: #dadada;
+  padding: 0.5rem 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  column-gap: 0.5rem;
+}
+.button--secondary {
+  border: #dadada 2px solid;
+  background-color: transparent;
+}
+.button__icon {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+.button__label {
+  font-family: "Inter", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+body {
+  background: pink;
+}/*# sourceMappingURL=main.css.map */
