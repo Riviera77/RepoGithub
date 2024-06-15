@@ -172,7 +172,7 @@ a {
   column-gap: 0.5rem;
 }
 .button--secondary {
-  border: #dadada 2px solid;
+  border: solid 2px #dadada;
   background-color: transparent;
 }
 .button__icon {
